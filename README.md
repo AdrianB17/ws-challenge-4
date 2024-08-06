@@ -63,6 +63,6 @@ NOTES:
 Al ingresar la ip que se muestra en el output y con el puerto 8080, podemos visualizar lo siguiente:
 <img width="616" alt="image" src="https://github.com/user-attachments/assets/10d3b7b1-f783-4c7f-b4bf-1065611d91c9">
 
-OBSERVACION: En la aplicacion le agregue la ruta por defecto, para que nos muestra si el servidor esta en el estado "running"
+OBSERVACION: En la aplicacion le agregue la ruta por defecto, para que nos muestra si el pod esta en el estado "running", asi como el service y el ingress estan configurados correctamente.
 
 
