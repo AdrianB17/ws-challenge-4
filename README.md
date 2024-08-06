@@ -88,8 +88,22 @@ Y visualizamos que en la ruta /metrics, ya podemos visualizar las metricas
 <img width="793" alt="image" src="https://github.com/user-attachments/assets/e10a6492-f95b-48c5-8a13-2daac230076e">
 
 # Instalar y configurar Prometheus Adapter
+Instalamos Prometheus Adapter
+
+```shell
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo update
+$ helm install prometheus prometheus-community/prometheus
+```
 
 # Crear HPA usando la métrica externa
+Para visualizar si las metricas estan siendo detectadas por prometheus, ejecuatamos el siguiente comando y buscamos la metrica
+```shell
+$ kubectl port-forward svc/prometheus-operated -n monitoring 9093:9090
+```
+<img width="1426" alt="image" src="https://github.com/user-attachments/assets/54983203-7cae-41c9-b1c7-b2e99c8e0881">
+
+OBSERVACION: Si bien las metricas se muestran en la ruta /metrics, prometheus no esta recibiendo las metricas del pod del namespace asignado :(
 
 # Generar carga y analizar
 Modificamos el script para generar trafico en la ruta /heavywork
