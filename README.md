@@ -1,4 +1,4 @@
-# Challege4-ws
+# Challege4-WS
 
 Nos enfocamos en la flexibilidad y automatización del escalamiento para aplicaciones desplegadas sobre Kubernetes, el cual a su vez reside sobre una arquitectura de nube privada provista por Whitestack. En específico, se pretende utilizar métricas generadas por una app, prometheus y el HPA de kubernetes.
 
@@ -35,3 +35,13 @@ Crear la imagen con el dockerfile y subirlo a un repositorio publico
 $ docker build -t adrianb17/challenge4-py:latest .
 $ docker push adrianb17/challenge4-py:latest
 ```
+
+__Crear un Chart Helm y desplegarlo al cluster__
+
+Creamos un chart helm y modificamos el values.yaml, asi como los templates. Luego, desplegamos el chart a K8S
+```shell
+$ helm create prometheus
+$ helm install prometheus prometheus
+```
+
+IMPORTANTE: En este caso, ya tenemos  el chart helm. Entonces, solo desplegamos el chart con el comando "helm install"
