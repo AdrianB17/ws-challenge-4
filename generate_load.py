@@ -39,7 +39,7 @@ arrival_rate = 20  # Average arrival rate of 20 requests per second
 decay_rate = 0.2  # Decay rate of 0.2 requests per second
 duration = 120  # Duration of the load test in seconds
 
-host, port, path = ('127.0.0.1', 18080, '')
+host, port, path = ('myapp.201.217.240.66.nip.io', 8080, '/heavywork')
 
 # Override defaults if command-line arguments are provided
 if len(sys.argv) > 3:

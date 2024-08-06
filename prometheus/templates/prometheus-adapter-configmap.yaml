@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-adapter-config
+  namespace: challenger-007
+data:
+  prometheus-adapter.yaml: |
+    rules:
+    - seriesQuery: '{__name__="heavywork_requests_total"}'
+      resources:
+        overrides:
+          namespace:
+            resource: namespace
+          pod:
+            resource: pod
+      name:
+        matches: "heavywork_requests_total"
+        as: "heavywork_requests_total"
+      metricsQuery: 'rate(heavywork_requests_total[1m])'
