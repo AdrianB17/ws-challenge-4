@@ -61,7 +61,31 @@ Al ingresar la ip que se muestra en el output y con el puerto 8080, podemos visu
 
 OBSERVACION: En la aplicacion le agregue la ruta por defecto, para que nos muestra si el pod esta en el estado "running", asi como el service y el ingress estan configurados correctamente.
 
+# Desplegar la aplicación
+Agregamos el archivo servicemonitor.yaml en el directorio templates
+```yaml
 # Crear serviceMonitor para obtención de métricas
+Agregamos el archivo servicemonitor.yaml en el directorio 'templates'
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "prometheus.name" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "prometheus.name" . }}
+  endpoints:
+    - port: "8080"
+      path: /metrics
+      interval: 15s
+```
+IMPORTANTE: En este caso, ya esta desplegado con el primer comando 'helm install'. Si queremos modificar el chart helm, para actualizar el despliegue utilizamos el comando 'helm upgrade prometheus prometheus'
+
+Y visualizamos que en la ruta /metrics, ya podemos visualizar las metricas
+<img width="793" alt="image" src="https://github.com/user-attachments/assets/e10a6492-f95b-48c5-8a13-2daac230076e">
 
 # Instalar y configurar Prometheus Adapter
 
