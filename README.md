@@ -43,5 +43,24 @@ Creamos un chart helm y modificamos el values.yaml, asi como los templates. Lueg
 $ helm create prometheus
 $ helm install prometheus prometheus
 ```
-
 IMPORTANTE: En este caso, ya tenemos  el chart helm. Entonces, solo desplegamos el chart con el comando "helm install"
+
+__Validar disponibilidad de la aplicacion web__
+
+```shell
+$ helm install prometheus prometheus
+0805 23:00:10.163860    4588 warnings.go:70] Use tokens from the TokenRequest API or manually created secret-based tokens instead of auto-generated secret-based tokens.
+W0805 23:00:10.286424    4588 warnings.go:70] Use tokens from the TokenRequest API or manually created secret-based tokens instead of auto-generated secret-based tokens.
+NAME: prometheus
+LAST DEPLOYED: Mon Aug  5 23:00:06 2024
+NAMESPACE: challenger-007
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+  http://myapp.201.217.240.66.nip.io/
+```
+
+<img width="616" alt="image" src="https://github.com/user-attachments/assets/10d3b7b1-f783-4c7f-b4bf-1065611d91c9">
+
+
