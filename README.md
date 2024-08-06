@@ -11,8 +11,6 @@ Usamos la libreria python "prometheus_client" para obtener las metricas. Agregam
 
 __app.py__
 
-Un módulo de Terraform se organiza en un conjunto de archivos y directorios que juntos definen una parte específica de la infraestructura.
-
 ```python
 from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST  #Agregamos el modulo
 
@@ -26,8 +24,6 @@ def metrics():
 ```
 
 # Desplegar la aplicación
-
-
 __Crear la imagen y subir a Docker Hub__
 
 Crear la imagen con el dockerfile y subirlo a un repositorio publico
@@ -64,5 +60,29 @@ Al ingresar la ip que se muestra en el output y con el puerto 8080, podemos visu
 <img width="616" alt="image" src="https://github.com/user-attachments/assets/10d3b7b1-f783-4c7f-b4bf-1065611d91c9">
 
 OBSERVACION: En la aplicacion le agregue la ruta por defecto, para que nos muestra si el pod esta en el estado "running", asi como el service y el ingress estan configurados correctamente.
+
+# Crear serviceMonitor para obtención de métricas
+
+# Instalar y configurar Prometheus Adapter
+
+# Crear HPA usando la métrica externa
+
+# Generar carga y analizar
+Modificamos el script para generar trafico en la ruta /heavywork
+__app.py__
+
+```python
+host, port, path = ('myapp.201.217.240.66.nip.io', 8080, '/heavywork')
+```
+
+```shell
+$ python3 generate_load.py 
+202 {"message": "Heavy work started"}
+202 {"message": "Heavy work started"}
+202 {"message": "Heavy work started"}
+202 {"message": "Heavy work started"}
+```
+Y visualizamos que la metrica se actualiza:
+<img width="809" alt="image" src="https://github.com/user-attachments/assets/fc7d06d8-fb11-40c1-b807-40f7c69d9a02">
 
 
